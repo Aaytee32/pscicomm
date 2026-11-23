@@ -56,5 +56,22 @@
       "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
       "Educational content only, not medical advice."
     ]
+  },
+  "thrombus": {
+    "title": "From Platelets to Plasmin: A Clot in 60 Seconds",
+    "description": "Inside a brain artery, a clot is built step by step, from the first platelets to the fibrin that holds it together, and the plasmin that can break it apart. Drawn in colored pencil.",
+    "points": [
+      "Damaged lining: platelets stick first; in fast arterial flow, clots are platelet-rich",
+      "The platelet surface as a workbench: factors V and VIII speed thrombin generation",
+      "Thrombin cuts fibrinogen into fibrin, the clot's scaffold",
+      "Factor XIII, switched on by thrombin, cross-links the strands",
+      "t-PA from the lining turns plasminogen into plasmin on the clot surface, and fragments can travel downstream",
+      "Why fibrin content and cross-linking may affect how well clot-dissolving drugs work"
+    ],
+    "audience": "For medical and pharmacy students: hematology, stroke, and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 2, \"Thrombus formation\", and Fig. 2.2, paraphrased and redrawn. A teaching schematic, not to scale.",
+      "Educational content only, not medical advice."
+    ]
   }
 }

@@ -37,14 +37,19 @@ TAGLINE = "Short animated explainers that turn pharmacology, physiology and neur
 
 
 def latest_uploads() -> list[dict]:
-    """One row per video (the newest upload wins), newest first."""
+    """One row per video (the newest upload wins), newest first.
+
+    Each row gets an "episode" number: 1 for the first video ever uploaded, and so on.
+    Re-uploading a fixed version keeps the video's original number.
+    """
     if not LOG_FILE.exists():
         return []
     with LOG_FILE.open(newline="") as f:
         rows = list(csv.DictReader(f))
-    latest = {}
+    latest, episode = {}, {}
     for row in rows:  # the log is in time order, so later rows overwrite earlier ones
-        latest[row["public_id"]] = row
+        episode.setdefault(row["public_id"], len(episode) + 1)
+        latest[row["public_id"]] = {**row, "episode": episode[row["public_id"]]}
     return sorted(latest.values(), key=lambda r: r["uploaded_at"], reverse=True)
 
 
@@ -85,7 +90,8 @@ def duration(seconds: str) -> str:
     return f"{s // 60}:{s % 60:02d}"
 
 
-def card(index: int, row: dict, info: dict) -> str:
+def card(row: dict, info: dict) -> str:
+    index = row["episode"]
     e = html.escape
     url = row["url"]
     title = info.get("title") or default_title(row["public_id"])
@@ -131,7 +137,7 @@ def card(index: int, row: dict, info: dict) -> str:
 def build() -> Path:
     rows = latest_uploads()
     meta = load_meta(rows)
-    cards = "\n".join(card(i, r, meta.get(r["public_id"], {})) for i, r in enumerate(rows, 1))
+    cards = "\n".join(card(r, meta.get(r["public_id"], {})) for r in rows)
     if not cards:
         cards = '    <p class="empty">New videos coming soon.</p>'
     count = f'{len(rows)} video{"" if len(rows) == 1 else "s"}'
@@ -211,7 +217,8 @@ PAGE = """<!doctype html>
   .label {{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);
             margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }}
   .label::after {{ content: ''; flex: 1; height: 1px; background: var(--border); }}
-  .videos {{ display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start; padding-bottom: 5rem; }}
+  .videos {{ display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start;
+              grid-auto-flow: dense; padding-bottom: 5rem; }}  /* dense: a portrait card fills the gap a wide card leaves */
   .video-card {{ background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }}
   @media (min-width: 640px) {{ .video-card.wide {{ grid-column: span 2; }} }}
   .video-card video {{ display: block; width: 100%; height: auto; background: #000; }}
