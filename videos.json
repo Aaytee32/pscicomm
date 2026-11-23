@@ -93,5 +93,23 @@
       "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
       "Educational content only, not medical advice."
     ]
+  },
+  "deafness": {
+    "title": "Two Routes to the Cochlea: Types of Deafness Explained",
+    "description": "Sound reaches the cochlea by two routes: through air and the ossicles, or through the bones of the skull. Every type of deafness, both tuning-fork tests, and the cochlear implant make sense once you know which route is broken.",
+    "points": [
+      "Conduction deafness: a block in the outer or middle ear. Bone conduction still works, so it's never total.",
+      "Sensorineural deafness: damaged spiral-organ hair cells or cochlear nerve (e.g. acoustic neurinoma), so both routes fail",
+      "Weber test: fork on the mid-forehead; heard in the normal ear (nerve deafness) or louder in the affected ear (conduction deafness)",
+      "Rinne test: air vs bone; normally air > bone; bone > air in conduction deafness; both reduced in sensorineural loss",
+      "Cochlear implants: microphone → receiver under the skin → electrode array; each frequency activates its own electrodes, and patients relearn to hear"
+    ],
+    "audience": "For medical and pharmacy students: neuroscience, ENT, clinical examination, and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Young PA, Young PH, Tolbert DL. Basic Clinical Neuroscience, 3rd ed. (Wolters Kluwer), pp. 165–168, paraphrased. Rinne results in hearing loss and the cochlea's frequency map are standard clinical teaching.",
+      "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
+      "Narration uses a synthetic voice.",
+      "Educational content only, not medical advice."
+    ]
   }
 }
