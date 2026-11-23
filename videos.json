@@ -73,5 +73,25 @@
       "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 2, \"Thrombus formation\", and Fig. 2.2, paraphrased and redrawn. A teaching schematic, not to scale.",
       "Educational content only, not medical advice."
     ]
+  },
+  "two-roads-news": {
+    "title": "Two Roads to a Damaged Artery: How Cholesterol & Hypertension Drive Atherosclerosis",
+    "subtitle": "NOX2, Angiotensin II & ROS",
+    "description": "In this real human artery, one side of the wall is more than five times thicker than the other: 0.25 mm here, 1.36 mm there. What builds it? Two roads that meet in the same damaged wall.",
+    "points": [
+      "A real human coronary artery section, measured: the thickening and its fat-laden cells",
+      "Road 1: high cholesterol → ↑ NOX2 oxidase → reactive oxygen species",
+      "Road 2: hypertension → angiotensin II → AT1 receptor → ↑ NADPH oxidases",
+      "Where they meet: ↓ nitric oxide, sticky white cells and platelets, inflammation → endothelial dysfunction",
+      "The mouse evidence: block either road (NOX2 or AT1R knockout) and most of the damage is blunted"
+    ],
+    "audience": "Atherosclerosis underlies both coronary and cerebral artery disease. For medical and pharmacy students: cardiovascular and stroke pathophysiology, and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 1 and Fig. 1.1, paraphrased and redrawn.",
+      "Images: The GTEx Project, GTEX-13S86-0525, via NCI Imaging Data Commons (CC BY 4.0); \"Lab mice\" by Understanding Animal Research (CC BY 2.0, illustrative); \"Blood pressure monitoring\" by rawpixel.com (CC0).",
+      "Wall measurements made on the GTEx image itself.",
+      "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
+      "Educational content only, not medical advice."
+    ]
   }
 }
