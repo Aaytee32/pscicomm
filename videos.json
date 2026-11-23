@@ -36,5 +36,25 @@
       "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
       "Educational content only, not medical advice."
     ]
+  },
+  "thrombus-news": {
+    "title": "Thrombus Formation in 60 Seconds",
+    "subtitle": "Real Histology",
+    "description": "About three quarters of this clot is pale fibrin, and only a quarter red cells. Real microscope images show how a thrombus is built, and why that matters for clot-dissolving drugs.",
+    "points": [
+      "A real clot cut open: layered bands of fibrin and red cells",
+      "Up close: the fibrin net that traps red cells (electron micrograph)",
+      "Fast arterial flow → platelet-rich clots; slow flow → fibrin-rich",
+      "The chain: tenase and prothrombinase on the platelet surface → thrombin → fibrin, cross-linked by factor XIIIa",
+      "t-PA and plasmin break fibrin down, and why fibrin content and cross-linking may affect how well clot-dissolving drugs work"
+    ],
+    "audience": "For medical and pharmacy students: hematology, stroke, and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 2, \"Thrombus formation\", paraphrased.",
+      "Images: Mikael Häggström, M.D. (CC0); Janice Carr, CDC (public domain).",
+      "The 74% / 26% split is a colour count on one slide, an estimate (about ±3%), not a lab measurement.",
+      "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
+      "Educational content only, not medical advice."
+    ]
   }
 }

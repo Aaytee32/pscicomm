@@ -111,7 +111,13 @@ def card(index: int, row: dict, info: dict) -> str:
     if credits:
         extra += '\n        <div class="video-credits">' + "".join(f"<p>{e(c)}</p>" for c in credits) + "</div>"
 
-    return f"""    <article class="video-card" id="{e(row["public_id"])}">
+    try:
+        wide = float(w) > float(h)  # landscape videos get a double-width card
+    except ValueError:
+        wide = False
+    classes = "video-card wide" if wide else "video-card"
+
+    return f"""    <article class="{classes}" id="{e(row["public_id"])}">
       <video controls preload="none" playsinline poster="{e(poster_url(url))}" style="aspect-ratio: {e(w)} / {e(h)}" aria-label="{e(title)}">
         <source src="{e(cloudinary_variant(url, "q_auto"))}" type="video/mp4">
       </video>
@@ -207,6 +213,7 @@ PAGE = """<!doctype html>
   .label::after {{ content: ''; flex: 1; height: 1px; background: var(--border); }}
   .videos {{ display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start; padding-bottom: 5rem; }}
   .video-card {{ background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }}
+  @media (min-width: 640px) {{ .video-card.wide {{ grid-column: span 2; }} }}
   .video-card video {{ display: block; width: 100%; height: auto; background: #000; }}
   .video-body {{ padding: 1.1rem 1.25rem 1.35rem; }}
   .video-meta {{ display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;

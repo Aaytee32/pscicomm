@@ -10,7 +10,7 @@
 <meta property="og:title" content="PSciComm | Science explainers by Deoyin & Company">
 <meta property="og:description" content="Short animated explainers that turn pharmacology, physiology and neuroscience into clear visual stories.">
 <meta property="og:url" content="https://pscicomm.deoyin.com/">
-<meta property="og:image" content="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795467154/cbf.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795469745/thrombus-news.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://res.cloudinary.com">
@@ -56,6 +56,7 @@
   .label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .videos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start; padding-bottom: 5rem; }
   .video-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  @media (min-width: 640px) { .video-card.wide { grid-column: span 2; } }
   .video-card video { display: block; width: 100%; height: auto; background: #000; }
   .video-body { padding: 1.1rem 1.25rem 1.35rem; }
   .video-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
@@ -92,14 +93,27 @@
   <p class="sub">Short animated explainers that turn pharmacology, physiology and neuroscience into clear visual stories.</p>
 </div></header>
 <main class="wrap">
-  <div class="label">2 videos</div>
+  <div class="label">3 videos</div>
   <section class="videos">
+    <article class="video-card wide" id="thrombus-news">
+      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795469745/thrombus-news.jpg" style="aspect-ratio: 1920 / 1080" aria-label="Thrombus Formation in 60 Seconds">
+        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795469745/thrombus-news.mp4" type="video/mp4">
+      </video>
+      <div class="video-body">
+        <div class="video-meta"><span>01</span><span>0:58</span></div>
+        <h2 class="video-title">Thrombus Formation in 60 Seconds</h2>
+        <p class="video-subtitle">Real Histology</p>
+        <p class="video-desc">About three quarters of this clot is pale fibrin, and only a quarter red cells. Real microscope images show how a thrombus is built, and why that matters for clot-dissolving drugs.</p>
+        <details class="video-more"><summary>In this video</summary><ul><li>A real clot cut open: layered bands of fibrin and red cells</li><li>Up close: the fibrin net that traps red cells (electron micrograph)</li><li>Fast arterial flow → platelet-rich clots; slow flow → fibrin-rich</li><li>The chain: tenase and prothrombinase on the platelet surface → thrombin → fibrin, cross-linked by factor XIIIa</li><li>t-PA and plasmin break fibrin down, and why fibrin content and cross-linking may affect how well clot-dissolving drugs work</li></ul><p class="video-audience">For medical and pharmacy students: hematology, stroke, and USMLE / NAPLEX / PLAB revision.</p></details>
+        <div class="video-credits"><p>Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 2, &quot;Thrombus formation&quot;, paraphrased.</p><p>Images: Mikael Häggström, M.D. (CC0); Janice Carr, CDC (public domain).</p><p>The 74% / 26% split is a colour count on one slide, an estimate (about ±3%), not a lab measurement.</p><p>Drums: &quot;MuldjordKit&quot; by Lars Muldjord (CC BY 4.0).</p><p>Educational content only, not medical advice.</p></div>
+      </div>
+    </article>
     <article class="video-card" id="cbf">
       <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795467154/cbf.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow">
         <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795467154/cbf.mp4" type="video/mp4">
       </video>
       <div class="video-body">
-        <div class="video-meta"><span>01</span><span>1:59</span></div>
+        <div class="video-meta"><span>02</span><span>1:59</span></div>
         <h2 class="video-title">Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow</h2>
         <p class="video-subtitle">CPP, CVR &amp; Carotid Stenosis</p>
         <p class="video-desc">Between 70 and 150 mmHg of perfusion pressure, cerebral blood flow barely changes. Here&#x27;s how the brain does it, and when it fails.</p>
@@ -112,7 +126,7 @@
         <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795463290/isch-flat.mp4" type="video/mp4">
       </video>
       <div class="video-body">
-        <div class="video-meta"><span>02</span><span>2:28</span></div>
+        <div class="video-meta"><span>03</span><span>2:28</span></div>
         <h2 class="video-title">Ischemic Stroke: What Happens in the First 24 Hours</h2>
         <p class="video-subtitle">CBF, OEF &amp; the Penumbra</p>
         <p class="video-desc">By 24 hours, blood flow at the center of an ischemic stroke drops below 20% of normal. Here&#x27;s how it gets there, step by step.</p>
