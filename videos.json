@@ -111,5 +111,23 @@
       "Narration uses a synthetic voice.",
       "Educational content only, not medical advice."
     ]
+  },
+  "ama-inserts": {
+    "title": "Stroke, Swallowing & Tube Feeding: 3 Things Families Need to Know",
+    "description": "Ama's stroke left her unable to swallow safely. This case-based explainer walks through three practical questions her care team and family faced.",
+    "points": [
+      "Silent aspiration: food or liquid can enter the airway with no cough. Bedside checks can miss it; an X-ray swallow study can show it.",
+      "Crush or not? Extended-release tablets must never be crushed. Example: the metoprolol succinate ER label says \"do not crush\". Give one medicine at a time, flushed with water before, between and after.",
+      "Who pays? Under Original Medicare, home tube feeding is covered by Part B as a prosthetic device: 20% after the Part B deductible. \"Permanent\" means long and indefinite duration, not \"can never improve\"."
+    ],
+    "audience": "For nursing, pharmacy and medical students, and for families navigating stroke care.",
+    "credits": [
+      "Sources: CMS LCD L38955 and Policy Article A58833 (Enteral Nutrition); Medicare.gov, Prosthetic devices; DailyMed metoprolol succinate ER label; ISMP \"Do Not Crush\" list; ASPEN Safe Practices for Enteral Nutrition (2017); AHA/ASA acute ischemic stroke guidelines (2019). Coverage rules as of November 2026; Medicare Advantage and supplemental plans differ.",
+      "Images: \"Normal barium swallow animation\" by Hellerhoff, derivative by Anka Friedrich (CC BY 4.0), shown as an illustration of a normal swallow; \"Pill crushers\" by Mcapdevila (CC BY 4.0); \"Medicine Drug Pills on Plate\" by epSos.de (CC BY 2.0); hospital corridor and tablet photos (CC0).",
+      "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
+      "Narration uses a synthetic voice.",
+      "Ama Boateng, her family and care team are fictional.",
+      "Educational content only, not medical, legal or insurance advice. Ask your care team and plan about your situation."
+    ]
   }
 }
