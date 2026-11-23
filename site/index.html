@@ -54,12 +54,15 @@
   .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);
             margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
   .label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .videos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start;
-              grid-auto-flow: dense; padding-bottom: 5rem; }  /* dense: a portrait card fills the gap a wide card leaves */
-  .video-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-  @media (min-width: 640px) { .video-card.wide { grid-column: span 2; } }
-  .video-card video { display: block; width: 100%; height: auto; background: #000; }
-  .video-body { padding: 1.1rem 1.25rem 1.35rem; }
+  /* Uniform grid: equal columns, and cards in a row stretch to the same height. */
+  .videos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); padding-bottom: 5rem; }
+  .video-card { display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .video-frame { position: relative; overflow: hidden; background: #000; aspect-ratio: var(--ar, 9 / 16); }
+  .video-frame::before { content: ''; position: absolute; inset: -24px; background: var(--poster) center / cover no-repeat;
+                         filter: blur(22px) brightness(0.45); }
+  .video-frame video { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; background: transparent; }
+  @media (min-width: 640px) { .video-frame { aspect-ratio: 1 / 1; } }  /* same square frame for every video on desktop */
+  .video-body { flex: 1; padding: 1.1rem 1.25rem 1.35rem; }
   .video-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
                  color: var(--text-muted); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
   .video-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
@@ -96,10 +99,12 @@
 <main class="wrap">
   <div class="label">7 videos</div>
   <section class="videos">
-    <article class="video-card wide" id="ama-inserts">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795471158/ama-inserts.jpg" style="aspect-ratio: 1920 / 1080" aria-label="Stroke, Swallowing &amp; Tube Feeding: 3 Things Families Need to Know">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795471158/ama-inserts.mp4" type="video/mp4">
-      </video>
+    <article class="video-card" id="ama-inserts">
+      <div class="video-frame" style="--ar: 1920 / 1080; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795471158/ama-inserts.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795471158/ama-inserts.jpg" aria-label="Stroke, Swallowing &amp; Tube Feeding: 3 Things Families Need to Know">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795471158/ama-inserts.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>07</span><span>1:51</span></div>
         <h2 class="video-title">Stroke, Swallowing &amp; Tube Feeding: 3 Things Families Need to Know</h2>
@@ -109,9 +114,11 @@
       </div>
     </article>
     <article class="video-card" id="deafness">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470758/deafness.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Two Routes to the Cochlea: Types of Deafness Explained">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470758/deafness.mp4" type="video/mp4">
-      </video>
+      <div class="video-frame" style="--ar: 1080 / 1920; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470758/deafness.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470758/deafness.jpg" aria-label="Two Routes to the Cochlea: Types of Deafness Explained">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470758/deafness.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>06</span><span>1:22</span></div>
         <h2 class="video-title">Two Routes to the Cochlea: Types of Deafness Explained</h2>
@@ -120,10 +127,12 @@
         <div class="video-credits"><p>Source: Young PA, Young PH, Tolbert DL. Basic Clinical Neuroscience, 3rd ed. (Wolters Kluwer), pp. 165–168, paraphrased. Rinne results in hearing loss and the cochlea&#x27;s frequency map are standard clinical teaching.</p><p>Drums: &quot;MuldjordKit&quot; by Lars Muldjord (CC BY 4.0).</p><p>Narration uses a synthetic voice.</p><p>Educational content only, not medical advice.</p></div>
       </div>
     </article>
-    <article class="video-card wide" id="two-roads-news">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470487/two-roads-news.jpg" style="aspect-ratio: 1920 / 1080" aria-label="Two Roads to a Damaged Artery: How Cholesterol &amp; Hypertension Drive Atherosclerosis">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470487/two-roads-news.mp4" type="video/mp4">
-      </video>
+    <article class="video-card" id="two-roads-news">
+      <div class="video-frame" style="--ar: 1920 / 1080; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470487/two-roads-news.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470487/two-roads-news.jpg" aria-label="Two Roads to a Damaged Artery: How Cholesterol &amp; Hypertension Drive Atherosclerosis">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470487/two-roads-news.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>05</span><span>0:57</span></div>
         <h2 class="video-title">Two Roads to a Damaged Artery: How Cholesterol &amp; Hypertension Drive Atherosclerosis</h2>
@@ -133,10 +142,12 @@
         <div class="video-credits"><p>Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 1 and Fig. 1.1, paraphrased and redrawn.</p><p>Images: The GTEx Project, GTEX-13S86-0525, via NCI Imaging Data Commons (CC BY 4.0); &quot;Lab mice&quot; by Understanding Animal Research (CC BY 2.0, illustrative); &quot;Blood pressure monitoring&quot; by rawpixel.com (CC0).</p><p>Wall measurements made on the GTEx image itself.</p><p>Drums: &quot;MuldjordKit&quot; by Lars Muldjord (CC BY 4.0).</p><p>Educational content only, not medical advice.</p></div>
       </div>
     </article>
-    <article class="video-card wide" id="thrombus">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470119/thrombus.jpg" style="aspect-ratio: 1920 / 1080" aria-label="From Platelets to Plasmin: A Clot in 60 Seconds">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470119/thrombus.mp4" type="video/mp4">
-      </video>
+    <article class="video-card" id="thrombus">
+      <div class="video-frame" style="--ar: 1920 / 1080; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470119/thrombus.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795470119/thrombus.jpg" aria-label="From Platelets to Plasmin: A Clot in 60 Seconds">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795470119/thrombus.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>04</span><span>1:00</span></div>
         <h2 class="video-title">From Platelets to Plasmin: A Clot in 60 Seconds</h2>
@@ -145,10 +156,12 @@
         <div class="video-credits"><p>Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), Ch. 2, &quot;Thrombus formation&quot;, and Fig. 2.2, paraphrased and redrawn. A teaching schematic, not to scale.</p><p>Educational content only, not medical advice.</p></div>
       </div>
     </article>
-    <article class="video-card wide" id="thrombus-news">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795469745/thrombus-news.jpg" style="aspect-ratio: 1920 / 1080" aria-label="Thrombus Formation in 60 Seconds">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795469745/thrombus-news.mp4" type="video/mp4">
-      </video>
+    <article class="video-card" id="thrombus-news">
+      <div class="video-frame" style="--ar: 1920 / 1080; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795469745/thrombus-news.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795469745/thrombus-news.jpg" aria-label="Thrombus Formation in 60 Seconds">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795469745/thrombus-news.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>03</span><span>0:58</span></div>
         <h2 class="video-title">Thrombus Formation in 60 Seconds</h2>
@@ -159,9 +172,11 @@
       </div>
     </article>
     <article class="video-card" id="cbf">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795467154/cbf.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795467154/cbf.mp4" type="video/mp4">
-      </video>
+      <div class="video-frame" style="--ar: 1080 / 1920; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795467154/cbf.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795467154/cbf.jpg" aria-label="Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795467154/cbf.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>02</span><span>1:59</span></div>
         <h2 class="video-title">Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow</h2>
@@ -172,9 +187,11 @@
       </div>
     </article>
     <article class="video-card" id="isch-flat">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795463290/isch-flat.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Ischemic Stroke: What Happens in the First 24 Hours">
-        <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795463290/isch-flat.mp4" type="video/mp4">
-      </video>
+      <div class="video-frame" style="--ar: 1080 / 1920; --poster: url('https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795463290/isch-flat.jpg')">
+        <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795463290/isch-flat.jpg" aria-label="Ischemic Stroke: What Happens in the First 24 Hours">
+          <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795463290/isch-flat.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>01</span><span>2:28</span></div>
         <h2 class="video-title">Ischemic Stroke: What Happens in the First 24 Hours</h2>

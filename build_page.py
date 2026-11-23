@@ -117,16 +117,17 @@ def card(row: dict, info: dict) -> str:
     if credits:
         extra += '\n        <div class="video-credits">' + "".join(f"<p>{e(c)}</p>" for c in credits) + "</div>"
 
-    try:
-        wide = float(w) > float(h)  # landscape videos get a double-width card
-    except ValueError:
-        wide = False
-    classes = "video-card wide" if wide else "video-card"
+    poster = e(poster_url(url))
+    # --ar is the video's own shape (used on phones); on desktop every frame is square.
+    # --poster fills the space around the video with a blurred copy of its thumbnail.
+    frame_style = f"--ar: {e(w)} / {e(h)}; --poster: url('{poster}')"
 
-    return f"""    <article class="{classes}" id="{e(row["public_id"])}">
-      <video controls preload="none" playsinline poster="{e(poster_url(url))}" style="aspect-ratio: {e(w)} / {e(h)}" aria-label="{e(title)}">
-        <source src="{e(cloudinary_variant(url, "q_auto"))}" type="video/mp4">
-      </video>
+    return f"""    <article class="video-card" id="{e(row["public_id"])}">
+      <div class="video-frame" style="{frame_style}">
+        <video controls preload="none" playsinline poster="{poster}" aria-label="{e(title)}">
+          <source src="{e(cloudinary_variant(url, "q_auto"))}" type="video/mp4">
+        </video>
+      </div>
       <div class="video-body">
         <div class="video-meta"><span>{index:02d}</span><span>{length}</span></div>
         <h2 class="video-title">{e(title)}</h2>{extra}
@@ -217,12 +218,15 @@ PAGE = """<!doctype html>
   .label {{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted);
             margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }}
   .label::after {{ content: ''; flex: 1; height: 1px; background: var(--border); }}
-  .videos {{ display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start;
-              grid-auto-flow: dense; padding-bottom: 5rem; }}  /* dense: a portrait card fills the gap a wide card leaves */
-  .video-card {{ background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }}
-  @media (min-width: 640px) {{ .video-card.wide {{ grid-column: span 2; }} }}
-  .video-card video {{ display: block; width: 100%; height: auto; background: #000; }}
-  .video-body {{ padding: 1.1rem 1.25rem 1.35rem; }}
+  /* Uniform grid: equal columns, and cards in a row stretch to the same height. */
+  .videos {{ display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); padding-bottom: 5rem; }}
+  .video-card {{ display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }}
+  .video-frame {{ position: relative; overflow: hidden; background: #000; aspect-ratio: var(--ar, 9 / 16); }}
+  .video-frame::before {{ content: ''; position: absolute; inset: -24px; background: var(--poster) center / cover no-repeat;
+                         filter: blur(22px) brightness(0.45); }}
+  .video-frame video {{ position: relative; display: block; width: 100%; height: 100%; object-fit: contain; background: transparent; }}
+  @media (min-width: 640px) {{ .video-frame {{ aspect-ratio: 1 / 1; }} }}  /* same square frame for every video on desktop */
+  .video-body {{ flex: 1; padding: 1.1rem 1.25rem 1.35rem; }}
   .video-meta {{ display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
                  color: var(--text-muted); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }}
   .video-title {{ font-size: 1.15rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }}
