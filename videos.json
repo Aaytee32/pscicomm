@@ -16,5 +16,25 @@
       "Music includes the Salamander Grand Piano by Alexander Holm (CC BY 3.0).",
       "Educational content only, not medical advice."
     ]
+  },
+  "cbf": {
+    "title": "Cerebral Autoregulation Explained: How the Brain Holds Its Blood Flow",
+    "subtitle": "CPP, CVR & Carotid Stenosis",
+    "description": "Between 70 and 150 mmHg of perfusion pressure, cerebral blood flow barely changes. Here's how the brain does it, and when it fails.",
+    "points": [
+      "The autoregulation plateau: flow falls ≤ 18%, then steeply outside 70–150 mmHg",
+      "The lever: arteriolar diameter, cerebrovascular resistance (CVR), a ~10 s lag, and the rise in CBV",
+      "Myogenic vs metabolic control: why local oxygen wins in vivo",
+      "Chronic hypertension shifts the curve: lower limit 100–120 mmHg, and why that matters for ischemia",
+      "Local CPP, not MAP: CPP = MAP − ICP",
+      "Finite capacity: autoregulation lost in hypercapnia, anemia, hypoxemia",
+      "Carotid stenosis: no effect until 60–70%, and the role of collaterals"
+    ],
+    "audience": "For medical and pharmacy students: neurology, physiology, and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), pp. 29–30, paraphrased. Curves are schematic.",
+      "Drums: \"MuldjordKit\" by Lars Muldjord (CC BY 4.0).",
+      "Educational content only, not medical advice."
+    ]
   }
 }
