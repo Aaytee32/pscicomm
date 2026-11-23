@@ -1,6 +1,20 @@
 {
   "isch-flat": {
-    "title": "Isch Flat",
-    "description": ""
+    "title": "Ischemic Stroke: What Happens in the First 24 Hours",
+    "subtitle": "CBF, OEF & the Penumbra",
+    "description": "By 24 hours, blood flow at the center of an ischemic stroke drops below 20% of normal. Here's how it gets there, step by step.",
+    "points": [
+      "How the brain compensates first: arteriolar dilation, rising OEF, CBV and MTT (Fig. 3.7)",
+      "Core vs rim: why flow falls most in the central territory and collaterals protect the edges",
+      "The timeline: CBF, CMRO₂ and OEF from 1 hour to 24 hours and beyond",
+      "The rim of high oxygen extraction, lasting up to 16 hours, and its variable fate",
+      "Spontaneous recanalization, luxury perfusion, and the chronic infarct"
+    ],
+    "audience": "For medical and pharmacy education: neurology, neuropharmacology and USMLE / NAPLEX / PLAB revision.",
+    "credits": [
+      "Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), pp. 30–31, paraphrased. Graphs are schematic, after Fig. 3.7.",
+      "Music includes the Salamander Grand Piano by Alexander Holm (CC BY 3.0).",
+      "Educational content only, not medical advice."
+    ]
   }
 }

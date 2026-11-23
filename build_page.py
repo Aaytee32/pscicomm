@@ -12,6 +12,12 @@ Titles and descriptions live in videos.json, keyed by video ID (the file name wi
         "description": "How arterioles dilate to protect the brain as perfusion pressure drops."
       }
     }
+Only "title" is needed. Optional fields, shown on the card when present:
+    "subtitle"     short line under the title
+    "description"  a sentence or two, always visible
+    "points"       list of bullets, in a collapsible "In this video" section
+    "audience"     one line under the bullets (who it's for)
+    "credits"      list of small-print lines: sources, music licences, disclaimers
 Every uploaded video is added to videos.json automatically, so you only fill in the text.
 """
 import csv
@@ -86,14 +92,32 @@ def card(index: int, row: dict, info: dict) -> str:
     desc = info.get("description", "").strip()
     w, h = row.get("width") or "9", row.get("height") or "16"  # unknown size: assume a vertical short
     length = duration(row["seconds"])
-    desc_html = f'\n        <p class="video-desc">{e(desc)}</p>' if desc else ""
+    subtitle = info.get("subtitle", "").strip()
+    points = [p for p in info.get("points", []) if p.strip()]
+    audience = info.get("audience", "").strip()
+    credits = [c for c in info.get("credits", []) if c.strip()]
+
+    extra = ""
+    if subtitle:
+        extra += f'\n        <p class="video-subtitle">{e(subtitle)}</p>'
+    if desc:
+        extra += f'\n        <p class="video-desc">{e(desc)}</p>'
+    if points or audience:
+        items = "".join(f"<li>{e(p)}</li>" for p in points)
+        details = f"<ul>{items}</ul>" if items else ""
+        if audience:
+            details += f'<p class="video-audience">{e(audience)}</p>'
+        extra += f'\n        <details class="video-more"><summary>In this video</summary>{details}</details>'
+    if credits:
+        extra += '\n        <div class="video-credits">' + "".join(f"<p>{e(c)}</p>" for c in credits) + "</div>"
+
     return f"""    <article class="video-card" id="{e(row["public_id"])}">
       <video controls preload="none" playsinline poster="{e(poster_url(url))}" style="aspect-ratio: {e(w)} / {e(h)}" aria-label="{e(title)}">
         <source src="{e(cloudinary_variant(url, "q_auto"))}" type="video/mp4">
       </video>
       <div class="video-body">
         <div class="video-meta"><span>{index:02d}</span><span>{length}</span></div>
-        <h2 class="video-title">{e(title)}</h2>{desc_html}
+        <h2 class="video-title">{e(title)}</h2>{extra}
       </div>
     </article>"""
 
@@ -188,7 +212,17 @@ PAGE = """<!doctype html>
   .video-meta {{ display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
                  color: var(--text-muted); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }}
   .video-title {{ font-size: 1.15rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }}
-  .video-desc {{ margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); font-weight: 300; }}
+  .video-subtitle {{ margin-top: 0.3rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }}
+  .video-desc {{ margin-top: 0.6rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); font-weight: 300; }}
+  .video-more {{ margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 0.8rem; line-height: 1.55; color: var(--text-mid); font-weight: 300; }}
+  .video-more summary {{ cursor: pointer; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); list-style: none; }}
+  .video-more summary::-webkit-details-marker {{ display: none; }}
+  .video-more summary::before {{ content: '+ '; color: var(--gold); }}
+  .video-more[open] summary::before {{ content: '\\2212  '; }}
+  .video-more summary:hover {{ color: var(--gold); }}
+  .video-more ul {{ margin: 0.6rem 0 0 1rem; display: grid; gap: 0.35rem; }}
+  .video-audience {{ margin-top: 0.6rem; font-style: italic; }}
+  .video-credits {{ margin-top: 0.9rem; font-size: 0.7rem; line-height: 1.5; color: var(--text-muted); display: grid; gap: 0.25rem; }}
   .empty {{ color: var(--text-muted); }}
   footer {{ border-top: 1px solid var(--border); padding: 1.5rem 0; font-family: var(--mono); font-size: 10px;
             letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }}

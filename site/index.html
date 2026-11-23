@@ -61,7 +61,17 @@
   .video-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
                  color: var(--text-muted); margin-bottom: 0.6rem; font-variant-numeric: tabular-nums; }
   .video-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
-  .video-desc { margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); font-weight: 300; }
+  .video-subtitle { margin-top: 0.3rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+  .video-desc { margin-top: 0.6rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); font-weight: 300; }
+  .video-more { margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.75rem; font-size: 0.8rem; line-height: 1.55; color: var(--text-mid); font-weight: 300; }
+  .video-more summary { cursor: pointer; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); list-style: none; }
+  .video-more summary::-webkit-details-marker { display: none; }
+  .video-more summary::before { content: '+ '; color: var(--gold); }
+  .video-more[open] summary::before { content: '\2212  '; }
+  .video-more summary:hover { color: var(--gold); }
+  .video-more ul { margin: 0.6rem 0 0 1rem; display: grid; gap: 0.35rem; }
+  .video-audience { margin-top: 0.6rem; font-style: italic; }
+  .video-credits { margin-top: 0.9rem; font-size: 0.7rem; line-height: 1.5; color: var(--text-muted); display: grid; gap: 0.25rem; }
   .empty { color: var(--text-muted); }
   footer { border-top: 1px solid var(--border); padding: 1.5rem 0; font-family: var(--mono); font-size: 10px;
             letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
@@ -85,12 +95,16 @@
   <div class="label">1 video</div>
   <section class="videos">
     <article class="video-card" id="isch-flat">
-      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795463290/isch-flat.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Isch Flat">
+      <video controls preload="none" playsinline poster="https://res.cloudinary.com/dlfs6onbf/video/upload/so_10p,w_720/v1795463290/isch-flat.jpg" style="aspect-ratio: 1080 / 1920" aria-label="Ischemic Stroke: What Happens in the First 24 Hours">
         <source src="https://res.cloudinary.com/dlfs6onbf/video/upload/q_auto/v1795463290/isch-flat.mp4" type="video/mp4">
       </video>
       <div class="video-body">
         <div class="video-meta"><span>01</span><span>2:28</span></div>
-        <h2 class="video-title">Isch Flat</h2>
+        <h2 class="video-title">Ischemic Stroke: What Happens in the First 24 Hours</h2>
+        <p class="video-subtitle">CBF, OEF &amp; the Penumbra</p>
+        <p class="video-desc">By 24 hours, blood flow at the center of an ischemic stroke drops below 20% of normal. Here&#x27;s how it gets there, step by step.</p>
+        <details class="video-more"><summary>In this video</summary><ul><li>How the brain compensates first: arteriolar dilation, rising OEF, CBV and MTT (Fig. 3.7)</li><li>Core vs rim: why flow falls most in the central territory and collaterals protect the edges</li><li>The timeline: CBF, CMRO₂ and OEF from 1 hour to 24 hours and beyond</li><li>The rim of high oxygen extraction, lasting up to 16 hours, and its variable fate</li><li>Spontaneous recanalization, luxury perfusion, and the chronic infarct</li></ul><p class="video-audience">For medical and pharmacy education: neurology, neuropharmacology and USMLE / NAPLEX / PLAB revision.</p></details>
+        <div class="video-credits"><p>Source: Stroke: Pathophysiology, Diagnosis, and Management, 7th ed. (Grotta et al., Elsevier), pp. 30–31, paraphrased. Graphs are schematic, after Fig. 3.7.</p><p>Music includes the Salamander Grand Piano by Alexander Holm (CC BY 3.0).</p><p>Educational content only, not medical advice.</p></div>
       </div>
     </article>
   </section>
