@@ -59,6 +59,7 @@
   },
   "thrombus": {
     "title": "From Platelets to Plasmin: A Clot in 60 Seconds",
+    "subtitle": "Thrombin, Fibrin & t-PA",
     "description": "Inside a brain artery, a clot is built step by step, from the first platelets to the fibrin that holds it together, and the plasmin that can break it apart. Drawn in colored pencil.",
     "points": [
       "Damaged lining: platelets stick first; in fast arterial flow, clots are platelet-rich",
@@ -96,6 +97,7 @@
   },
   "deafness": {
     "title": "Two Routes to the Cochlea: Types of Deafness Explained",
+    "subtitle": "Weber, Rinne & Cochlear Implants",
     "description": "Sound reaches the cochlea by two routes: through air and the ossicles, or through the bones of the skull. Every type of deafness, both tuning-fork tests, and the cochlear implant make sense once you know which route is broken.",
     "points": [
       "Conduction deafness: a block in the outer or middle ear. Bone conduction still works, so it's never total.",
@@ -114,6 +116,7 @@
   },
   "ama-inserts": {
     "title": "Stroke, Swallowing & Tube Feeding: 3 Things Families Need to Know",
+    "subtitle": "Aspiration, Pill Crushing & Medicare",
     "description": "Ama's stroke left her unable to swallow safely. This case-based explainer walks through three practical questions her care team and family faced.",
     "points": [
       "Silent aspiration: food or liquid can enter the airway with no cough. Bedside checks can miss it; an X-ray swallow study can show it.",
@@ -131,7 +134,8 @@
     ]
   },
   "celldeath": {
-    "title": "Two Ways a Cell Dies - Ischemic Stroke Cell-Death Sequelae",
+    "title": "Two Ways a Cell Dies",
+    "subtitle": "Ischemic Stroke Cell-Death Sequelae",
     "description": "When blood flow stops, a neuron doesn't just \"die\"; it takes one of two routes, and which one depends on how severe the injury is.",
     "paragraphs": [
       "This 2½-minute explainer follows the whole cell-death cascade of ischemic stroke on a single map: ATP collapse stalls the Na⁺/K⁺-ATPase, Na⁺ and Cl⁻ pour in and water follows into cytotoxic edema, depolarization opens NMDA receptors, and Ca²⁺ floods the cytosol. From there the cascade forks — severe injury fragments DNA and ends in necrosis; less severe injury runs the controlled programme.",

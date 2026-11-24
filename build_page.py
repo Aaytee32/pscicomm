@@ -63,11 +63,15 @@ def load_meta(rows: list[dict]) -> dict[str, dict]:
     meta = json.loads(META_FILE.read_text(encoding="utf-8")) if META_FILE.exists() else {}
     added = [r["public_id"] for r in rows if r["public_id"] not in meta]
     for pid in added:
-        meta[pid] = {"title": default_title(pid), "description": ""}
+        meta[pid] = {"title": default_title(pid), "subtitle": "", "description": ""}
     if added or not META_FILE.exists():
         META_FILE.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         for pid in added:
-            print(f"Added {pid} to {META_FILE.name}: give it a title and description there")
+            print(f"Added {pid} to {META_FILE.name}: give it a title, subtitle and description there")
+    # every card shows a gold subtitle line; flag any video that would be missing it
+    for r in rows:
+        if not meta.get(r["public_id"], {}).get("subtitle", "").strip():
+            print(f"Note: {r['public_id']} has no subtitle in {META_FILE.name}, so its card won't match the others")
     return meta
 
 
