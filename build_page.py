@@ -34,7 +34,7 @@ PAGE_FILE = SITE_DIR / "index.html"
 
 SITE_NAME = "PSciComm"
 DOMAIN = "pscicomm.deoyin.com"
-TAGLINE = "Short animated explainers that turn pharmacology, physiology and neuroscience into clear visual stories."
+TAGLINE = "Short visual explainers that make medicine, pharmacy and the life sciences clear, from the cell to the bedside."
 
 
 def latest_uploads() -> list[dict]:
