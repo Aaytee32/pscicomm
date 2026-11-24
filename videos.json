@@ -129,5 +129,19 @@
       "Ama Boateng, her family and care team are fictional.",
       "Educational content only, not medical, legal or insurance advice. Ask your care team and plan about your situation."
     ]
+  },
+  "celldeath": {
+    "title": "Two Ways a Cell Dies - Ischemic Stroke Cell-Death Sequelae",
+    "description": "When blood flow stops, a neuron doesn't just \"die\"; it takes one of two routes, and which one depends on how severe the injury is.",
+    "paragraphs": [
+      "This 2½-minute explainer follows the whole cell-death cascade of ischemic stroke on a single map: ATP collapse stalls the Na⁺/K⁺-ATPase, Na⁺ and Cl⁻ pour in and water follows into cytotoxic edema, depolarization opens NMDA receptors, and Ca²⁺ floods the cytosol. From there the cascade forks — severe injury fragments DNA and ends in necrosis; less severe injury runs the controlled programme.",
+      "Both apoptotic routes are drawn in full. Intrinsic: Ca²⁺ and oxidative stress dephosphorylate P-Bad; Bad neutralizes Bcl-2; Bax opens a pore in the outer mitochondrial membrane; cytochrome c escapes and assembles the apoptosome with Apaf-1, which switches on caspase 3 while Smac binds the IAPs and lifts the brake they hold on it. Extrinsic: a death ligand binds its receptor, FADD recruits pro-caspase 8, and caspase 8 cleaves caspase 3 directly. Both routes converge on caspase 3. HSP70 pushes back at four separate points."
+    ],
+    "audience": "For medical and pharmacy students.",
+    "credits": [
+      "A teaching schematic, not to scale, and not a quantitative model.",
+      "Music includes the Salamander Grand Piano by Alexander Holm (CC BY 3.0).",
+      "Educational content only, not medical advice."
+    ]
   }
 }

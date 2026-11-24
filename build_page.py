@@ -15,7 +15,8 @@ Titles and descriptions live in videos.json, keyed by video ID (the file name wi
 Only "title" is needed. Optional fields, shown on the card when present:
     "subtitle"     short line under the title
     "description"  a sentence or two, always visible
-    "points"       list of bullets, in a collapsible "In this video" section
+    "paragraphs"   list of longer paragraphs, in a collapsible "In this video" section
+    "points"       list of bullets, in the same collapsible section
     "audience"     one line under the bullets (who it's for)
     "credits"      list of small-print lines: sources, music licences, disclaimers
 Every uploaded video is added to videos.json automatically, so you only fill in the text.
@@ -99,6 +100,7 @@ def card(row: dict, info: dict) -> str:
     w, h = row.get("width") or "9", row.get("height") or "16"  # unknown size: assume a vertical short
     length = duration(row["seconds"])
     subtitle = info.get("subtitle", "").strip()
+    paragraphs = [p for p in info.get("paragraphs", []) if p.strip()]
     points = [p for p in info.get("points", []) if p.strip()]
     audience = info.get("audience", "").strip()
     credits = [c for c in info.get("credits", []) if c.strip()]
@@ -108,9 +110,10 @@ def card(row: dict, info: dict) -> str:
         extra += f'\n        <p class="video-subtitle">{e(subtitle)}</p>'
     if desc:
         extra += f'\n        <p class="video-desc">{e(desc)}</p>'
-    if points or audience:
+    if paragraphs or points or audience:
+        details = "".join(f'<p class="video-para">{e(p)}</p>' for p in paragraphs)
         items = "".join(f"<li>{e(p)}</li>" for p in points)
-        details = f"<ul>{items}</ul>" if items else ""
+        details += f"<ul>{items}</ul>" if items else ""
         if audience:
             details += f'<p class="video-audience">{e(audience)}</p>'
         extra += f'\n        <details class="video-more"><summary>In this video</summary>{details}</details>'
@@ -239,6 +242,7 @@ PAGE = """<!doctype html>
   .video-more[open] summary::before {{ content: '\\2212  '; }}
   .video-more summary:hover {{ color: var(--gold); }}
   .video-more ul {{ margin: 0.6rem 0 0 1rem; display: grid; gap: 0.35rem; }}
+  .video-para {{ margin-top: 0.6rem; }}
   .video-audience {{ margin-top: 0.6rem; font-style: italic; }}
   .video-credits {{ margin-top: 0.9rem; font-size: 0.7rem; line-height: 1.5; color: var(--text-muted); display: grid; gap: 0.25rem; }}
   .empty {{ color: var(--text-muted); }}
